@@ -1,0 +1,435 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;400&display=swap');
+
+:root {
+    --primary-glow: rgba(13, 110, 253, 0.5);
+    --secondary-glow: rgba(108, 117, 125, 0.4);
+    --background-dark: #0a0a0f; /* Very dark blue/black */
+    --background-medium: #1a1a2e; /* Dark purple/blue */
+    --background-light: #2a2a3e; /* Lighter shade */
+    --text-primary: #e0e0ff; /* Light lavender */
+    --text-secondary: #a0a0cc; /* Muted lavender */
+    --accent-cyan: #00ffff;
+    --accent-magenta: #ff00ff;
+    --border-color: rgba(173, 216, 230, 0.2); /* Light blueish border */
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(135deg, var(--background-dark) 0%, var(--background-medium) 100%);
+    color: var(--text-primary);
+    line-height: 1.6;
+    overflow-x: hidden; /* Prevent horizontal scroll */
+}
+
+h1, h5 {
+    font-family: 'Orbitron', sans-serif; /* Techy font for headings */
+    font-weight: 700;
+    text-shadow: 0 0 5px var(--accent-cyan), 0 0 10px var(--accent-magenta);
+    color: #fff;
+}
+
+.container {
+    max-width: 960px; /* Limit width for better readability on large screens */
+    background-color: rgba(10, 10, 15, 0.6); /* Slightly transparent background */
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5), inset 0 0 15px rgba(0, 255, 255, 0.1);
+    border: 1px solid var(--border-color);
+    margin-top: 3rem !important; /* More space from top */
+    margin-bottom: 3rem;
+    transition: box-shadow 0.3s ease-in-out;
+}
+
+.container:hover {
+     box-shadow: 0 0 30px rgba(0, 0, 0, 0.7), inset 0 0 20px rgba(0, 255, 255, 0.2);
+}
+
+/* --- Header & Language Switcher --- */
+header h1 {
+    font-size: 2.5rem; /* Larger title */
+}
+
+.lang-switcher .btn {
+    font-family: 'Orbitron', sans-serif;
+    border-color: var(--text-secondary);
+    color: var(--text-secondary);
+    transition: all 0.3s ease;
+    text-shadow: none; /* Remove heading shadow */
+}
+
+.lang-switcher .btn:hover,
+.lang-switcher .btn:focus {
+    background-color: var(--accent-cyan);
+    color: var(--background-dark);
+    border-color: var(--accent-cyan);
+    box-shadow: 0 0 10px var(--accent-cyan);
+}
+
+.lang-switcher .btn.active {
+    background: linear-gradient(45deg, var(--accent-cyan), var(--accent-magenta));
+    color: var(--background-dark);
+    border-color: var(--accent-magenta);
+    box-shadow: 0 0 15px var(--accent-magenta);
+}
+
+/* --- Tabs --- */
+.nav-tabs {
+    border-bottom: 1px solid var(--border-color);
+    margin-bottom: 1.5rem !important; /* More space below tabs */
+}
+
+.nav-tabs .nav-link {
+    font-family: 'Orbitron', sans-serif;
+    color: var(--text-secondary);
+    border: none;
+    border-bottom: 3px solid transparent;
+    padding: 0.75rem 1.25rem;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden; /* For pseudo-element animation */
+}
+
+.nav-tabs .nav-link::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--accent-cyan), var(--accent-magenta));
+    transition: all 0.4s ease;
+    transform: translateX(-50%);
+}
+
+.nav-tabs .nav-link:hover,
+.nav-tabs .nav-link:focus {
+    color: var(--text-primary);
+    background-color: transparent; /* No background change on hover */
+}
+
+.nav-tabs .nav-link:hover::before {
+     width: 100%;
+}
+
+
+.nav-tabs .nav-link.active {
+    color: #ffffff;
+    background-color: transparent;
+    border-bottom: 3px solid transparent; /* Hide default border */
+    text-shadow: 0 0 5px var(--accent-cyan);
+}
+
+.nav-tabs .nav-link.active::before {
+    width: 100%; /* Ensure active tab underline is full width */
+}
+
+/* --- Input Area --- */
+.form-control {
+    background-color: rgba(10, 10, 15, 0.8); /* Darker input */
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+    border-radius: 0.5rem;
+    min-height: 180px; /* Even taller */
+    font-family: 'Courier New', Courier, monospace; /* Monospace for code/requests */
+    font-size: 0.95rem;
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.4);
+    transition: all 0.3s ease;
+}
+
+.form-control:focus {
+    background-color: rgba(26, 26, 46, 0.9); /* Slightly lighter on focus */
+    color: #fff;
+    border-color: var(--accent-cyan);
+    box-shadow: 0 0 10px var(--primary-glow), inset 0 1px 3px rgba(0,0,0,0.4);
+    outline: none; /* Remove default outline */
+}
+
+/* --- Buttons --- */
+.btn {
+    font-family: 'Orbitron', sans-serif;
+    padding: 0.6rem 1.5rem;
+    border-radius: 0.5rem;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border: 1px solid transparent;
+    position: relative; /* For potential pseudo-elements */
+    overflow: hidden;
+}
+
+.btn-primary {
+    background: linear-gradient(45deg, #0d6efd, #0a58ca);
+    border-color: #0a58ca;
+    color: #fff;
+    box-shadow: 0 4px 10px rgba(13, 110, 253, 0.3);
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+    background: linear-gradient(45deg, #0b5ed7, #0a58ca);
+    border-color: #0a58ca;
+    color: #fff;
+    box-shadow: 0 6px 15px var(--primary-glow);
+    transform: translateY(-2px);
+}
+
+.btn-primary:disabled {
+    background: #343a40;
+    border-color: #343a40;
+    box-shadow: none;
+    transform: none;
+    cursor: not-allowed;
+}
+
+.btn-secondary {
+    background-color: var(--background-light);
+    border-color: var(--border-color);
+    color: var(--text-secondary);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.btn-secondary:hover,
+.btn-secondary:focus {
+    background-color: var(--background-medium);
+    border-color: var(--text-secondary);
+    color: var(--text-primary);
+    box-shadow: 0 6px 12px rgba(108, 117, 125, 0.3);
+    transform: translateY(-2px);
+}
+
+/* --- Output Area --- */
+label[for="outputCode"] {
+    font-family: 'Orbitron', sans-serif;
+    color: var(--text-secondary);
+    margin-bottom: 0.75rem;
+}
+
+pre {
+    margin-bottom: 0; /* Remove default margin */
+}
+
+pre code.hljs {
+    background-color: rgba(10, 10, 15, 0.9); /* Dark background for code */
+    border-radius: 0.5rem;
+    padding: 1.5rem; /* More padding */
+    border: 1px solid var(--border-color);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3), inset 0 0 10px rgba(0, 0, 0, 0.5);
+    min-height: 150px; /* Ensure minimum height */
+    white-space: pre-wrap; /* Wrap long lines */
+    word-break: break-all; /* Break long words/tokens */
+}
+
+/* Style for the disabled/placeholder state */
+pre.output-disabled {
+    opacity: 0.5;
+    background-color: rgba(10, 10, 15, 0.5); /* More subdued background */
+    cursor: not-allowed;
+}
+
+pre.output-disabled code.hljs {
+    background-color: transparent; /* Inherit from pre */
+}
+
+pre:not(.output-disabled) code.hljs:empty::before,
+pre:not(.output-disabled) code.hljs:only-child:not(:empty)::before { /* Target placeholder only when active */
+    content: attr(data-placeholder); /* Use data-placeholder attribute if needed, or style directly */
+    color: var(--text-secondary);
+    font-style: italic;
+}
+
+/* Adjust copy/download button positioning */
+.position-relative .position-absolute {
+    top: 0.5rem !important;
+    right: 0.5rem !important;
+}
+
+.position-relative .btn-sm {
+    padding: 0.2rem 0.4rem;
+    background-color: rgba(42, 42, 62, 0.7); /* Semi-transparent background */
+    border: 1px solid var(--border-color);
+    color: var(--text-secondary);
+    opacity: 0.7;
+    transition: all 0.3s ease;
+}
+
+.position-relative .btn-sm:hover {
+    opacity: 1;
+    background-color: var(--background-medium);
+    color: var(--accent-cyan);
+    border-color: var(--accent-cyan);
+    box-shadow: 0 0 5px var(--accent-cyan);
+}
+
+/* --- Info Block --- */
+.info-block {
+    background: linear-gradient(135deg, rgba(26, 26, 46, 0.5) 0%, rgba(42, 42, 62, 0.5) 100%);
+    padding: 1.5rem;
+    border-radius: 0.75rem;
+    margin-top: 2rem !important;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    color: var(--text-secondary);
+}
+
+.info-block h5 {
+    color: var(--text-primary);
+    margin-bottom: 0.75rem;
+    text-shadow: 0 0 3px var(--accent-cyan);
+}
+
+/* --- Error Alert --- */
+.alert-danger {
+    background-color: rgba(220, 53, 69, 0.2); /* Transparent red */
+    color: #f8d7da; /* Light red text */
+    border: 1px solid rgba(220, 53, 69, 0.5);
+    border-radius: 0.5rem;
+    font-weight: bold;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+/* --- Footer --- */
+.footer {
+    background-color: rgba(10, 10, 15, 0.9) !important; /* Slightly less transparent */
+    color: var(--text-secondary) !important;
+    padding-top: 1.5rem !important; /* More padding */
+    padding-bottom: 1.5rem !important;
+    border-top: 1px solid var(--border-color);
+    font-size: 0.9rem; /* Slightly larger font */
+    box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.3); /* Shadow at the top */
+}
+
+.footer a {
+    color: var(--text-secondary) !important;
+    text-decoration: none;
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+.footer a:hover,
+.footer a:focus {
+    color: var(--accent-cyan) !important; /* Highlight on hover */
+    text-shadow: 0 0 5px var(--accent-cyan);
+}
+
+.footer .container {
+    padding: 0 1rem; /* Adjust container padding for footer */
+    background-color: transparent; /* Remove container background */
+    box-shadow: none; /* Remove container shadow */
+    border: none; /* Remove container border */
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+}
+
+.footer .row {
+    align-items: center; /* Vertically align content */
+}
+
+.footer small {
+    display: block; /* Ensure small takes full width on small screens */
+    margin-bottom: 0.5rem; /* Space below copyright on small screens */
+}
+
+@media (min-width: 768px) { /* Medium devices and up */
+    .footer small {
+        margin-bottom: 0; /* Remove space on larger screens */
+    }
+}
+
+/* --- RTL Specific Styles --- */
+html[dir="rtl"] {
+    /* Adjustments for RTL layout if needed */
+    .lang-switcher button {
+        margin-left: 0;
+        margin-right: 5px;
+    }
+    .position-relative .position-absolute {
+        right: auto;
+        left: 0.5rem !important;
+    }
+     .position-relative .btn-sm.me-1 {
+        margin-right: 0 !important;
+        margin-left: 0.25rem !important; /* Add space between buttons in RTL */
+    }
+    .nav-tabs .nav-link::before {
+        left: auto;
+        right: 50%;
+        transform: translateX(50%);
+    }
+    /* Fix button group rounding in RTL */
+    .lang-switcher .btn {
+        border-radius: 0;
+    }
+    .lang-switcher .btn:first-child { /* Rightmost button in RTL */
+        border-top-right-radius: 0.5rem;
+        border-bottom-right-radius: 0.5rem;
+        margin-left: 0 !important; /* Ensure no extra space */
+        margin-right: 0 !important;
+    }
+    .lang-switcher .btn:last-child { /* Leftmost button in RTL */
+        border-top-left-radius: 0.5rem;
+        border-bottom-left-radius: 0.5rem;
+        margin-left: 0 !important;
+        margin-right: 5px !important; /* Keep original spacing */
+    }
+     .lang-switcher .btn:not(:first-child):not(:last-child) { /* Middle buttons */
+        margin-left: 0 !important;
+        margin-right: 5px !important; /* Keep original spacing */
+    }
+}
+
+/* --- Animations (Subtle) --- */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.container, .info-block, pre code.hljs, .alert {
+    animation: fadeIn 0.5s ease-out forwards;
+}
+
+/* --- Scrollbar Styling (Optional, Webkit only) --- */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--background-dark);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(var(--accent-cyan), var(--accent-magenta));
+    border-radius: 10px;
+    border: 1px solid var(--background-medium);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(var(--accent-magenta), var(--accent-cyan));
+}
+
+/* --- Highlight.js Theme Overrides (if needed) --- */
+.hljs {
+    color: #abb2bf; /* Default text color from atom-one-dark */
+    background: transparent !important; /* Make background transparent to use pre's background */
+}
+
+.hljs-keyword, .hljs-selector-tag, .hljs-literal, .hljs-section, .hljs-link {
+    color: #c678dd; /* Purple */
+}
+
+.hljs-string, .hljs-symbol, .hljs-bullet, .hljs-addition {
+    color: #98c379; /* Green */
+}
+
+.hljs-number, .hljs-built_in, .hljs-builtin-name, .hljs-class .hljs-title, .hljs-attr {
+    color: #d19a66; /* Orange */
+}
+
+.hljs-function .hljs-title, .hljs-regexp, .hljs-variable, .hljs-template-variable {
+    color: #61afef; /* Blue */
+}
+
+.hljs-comment, .hljs-quote, .hljs-deletion {
+    color: #5c6370; /* Gray */
+    font-style: italic;
+}
